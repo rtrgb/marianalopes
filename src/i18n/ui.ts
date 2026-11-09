@@ -72,6 +72,7 @@ export const ui = {
     'lightbox.prev': 'Previous photo',
     'lightbox.next': 'Next photo',
     'footer.rights': 'All rights reserved.',
+    'footer.credit': 'site by',
   },
   pt: {
     'meta.title': 'Mariana Lopes | Criadora de conteúdo, editora de vídeo e modelo',
@@ -142,6 +143,7 @@ export const ui = {
     'lightbox.prev': 'Foto anterior',
     'lightbox.next': 'Próxima foto',
     'footer.rights': 'Todos os direitos reservados.',
+    'footer.credit': 'site por',
   },
 } as const;
 

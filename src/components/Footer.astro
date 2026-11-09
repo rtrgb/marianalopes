@@ -9,7 +9,10 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="container footer">
-  <span>&copy; {year} {site.name}. {t(lang, 'footer.rights')}</span>
+  <span>
+    &copy; {year} {site.name}. {t(lang, 'footer.rights')} &middot; {t(lang, 'footer.credit')}{' '}
+    <a href="https://www.linkedin.com/in/gabrielbuzzi/" target="_blank" rel="noopener" class="credit">Gabriel Buzzi</a>
+  </span>
   <span class="links">
     <a href={site.instagram} target="_blank" rel="noopener">Instagram</a>
     <Email label="E-mail" />
@@ -22,6 +25,8 @@ const year = new Date().getFullYear();
     padding-block: 32px; font-size: 13px; color: var(--muted);
     border-top: 1px solid var(--line);
   }
+  .credit { color: var(--muted); }
+  .credit:hover { color: var(--accent); }
   .links { display: flex; flex-wrap: wrap; gap: 28px; }
   .links :global(a) { color: var(--muted); }
   .links :global(a:hover) { color: var(--accent); }
