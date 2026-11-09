@@ -6,6 +6,7 @@ const SITE_URL = 'https://marianalopes.vercel.app';
 
 export default defineConfig({
   site: SITE_URL,
+  devToolbar: { enabled: false },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'pt'],
