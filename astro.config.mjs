@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// Troque pela URL final do site quando tiver o domínio.
 const SITE_URL = 'https://marianalopes.vercel.app';
 
 export default defineConfig({

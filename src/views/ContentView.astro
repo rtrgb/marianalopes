@@ -8,7 +8,7 @@ import { getWork, getVideos } from '../lib/content';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const work = await getWork(lang);
-// Só entram na grade os vídeos com arquivo ou link. Os outros aparecem quando ganharem um dos dois.
+// so video com arquivo ou link
 const videos = (await getVideos()).filter((v) => v.data.video || v.data.link);
 ---
 

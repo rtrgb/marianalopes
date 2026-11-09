@@ -9,7 +9,7 @@ const { lang, items } = Astro.props;
 const categories = ['Editorial', 'Studio', 'Commercial'] as const;
 const used = categories.filter((c) => items.some((i) => i.data.category === c));
 
-// Versão grande de cada foto para a visualização ampliada.
+// versao grande pro lightbox
 const large = await Promise.all(items.map((i) => getImage({ src: i.data.src, width: 1600, format: 'webp' })));
 ---
 

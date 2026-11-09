@@ -1,7 +1,3 @@
-/**
- * Todos os textos fixos do site, em inglês (en) e português (pt).
- * Para mudar um texto, edite aqui nos dois idiomas.
- */
 export const languages = { en: 'EN', pt: 'PT' } as const;
 export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'en';
@@ -155,7 +151,6 @@ export function t(lang: Lang, key: UIKey): string {
   return ui[lang][key] ?? ui[defaultLang][key];
 }
 
-/** Monta o caminho de uma página no idioma certo. */
 export function path(lang: Lang, p = '/'): string {
   const clean = p.startsWith('/') ? p : `/${p}`;
   return lang === defaultLang ? clean : `/pt${clean === '/' ? '/' : clean}`;
