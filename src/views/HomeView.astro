@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkList from '../components/WorkList.astro';
+import Email from '../components/Email.astro';
+import { t, path, type Lang } from '../i18n/ui';
+import { getWork, getModeling } from '../lib/content';
+import site from '../data/site.json';
+import portrait from '../assets/photos/studio-portrait.jpg';
+import aboutPhoto from '../assets/photos/awa-close.jpg';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const work = await getWork(lang);
+const featured = (await getModeling()).filter((m) => m.data.featured).slice(0, 3);
+---
+
+<BaseLayout lang={lang} route="/">
+  <section class="container hero">
+    <div class="hero-text">
+      <p class="eyebrow accent">{t(lang, 'hero.tagline')}</p>
+      <h1 class="serif name">Mariana<br /><em>Lopes</em></h1>
+      <p class="intro">{t(lang, 'hero.intro')}</p>
+      <div class="ctas">
+        <a href={path(lang, '/content/')} class="cta">{t(lang, 'hero.ctaContent')} &rarr;</a>
+        <a href={path(lang, '/modeling/')} class="cta muted">{t(lang, 'hero.ctaModeling')} &rarr;</a>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <Image
+        src={portrait}
+        alt={t(lang, 'hero.alt')}
+        widths={[480, 800, 1067]}
+        sizes="(max-width: 900px) 100vw, 46vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+      {site.photoCredit && <figcaption>{site.photoCredit}</figcaption>}
+    </figure>
+  </section>
+
+  <section class="work" aria-labelledby="work-title">
+    <div class="container stack">
+      <div class="head reveal">
+        <h2 id="work-title" class="section-title">{t(lang, 'work.title')}</h2>
+        <a href={path(lang, '/content/')} class="link-underline">{t(lang, 'work.all')} &rarr;</a>
+      </div>
+      <WorkList lang={lang} items={work} />
+    </div>
+  </section>
+
+  <section class="modeling" aria-labelledby="model-title">
+    <div class="container model-wrap">
+      <div class="model-text reveal">
+        <p class="eyebrow">{t(lang, 'modeling.eyebrow')}</p>
+        <h2 id="model-title" class="section-title">{t(lang, 'modeling.title')}</h2>
+        <p class="muted-text">{t(lang, 'modeling.intro')}</p>
+        <a href={path(lang, '/modeling/')} class="link-underline">{t(lang, 'modeling.view')} &rarr;</a>
+      </div>
+      <div class="model-grid">
+        {featured.map((m, i) => (
+          <a href={path(lang, '/modeling/')} class={`m m${i}`}>
+            <Image src={m.data.src} alt={m.data.alt[lang]} widths={[300, 600]} sizes="(max-width: 760px) 33vw, 22vw" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container about" aria-labelledby="about-title">
+    <Image src={aboutPhoto} alt={t(lang, 'about.alt')} widths={[380, 760]} sizes="(max-width: 760px) 100vw, 380px" class="about-photo" />
+    <div class="about-text reveal">
+      <p class="eyebrow">{t(lang, 'about.eyebrow')}</p>
+      <h2 id="about-title" class="serif about-title">{t(lang, 'about.heading')}</h2>
+      <p class="bio">{t(lang, 'about.bio')}</p>
+      <dl class="facts">
+        <div><dt>{t(lang, 'about.based')}</dt><dd>{site.location}</dd></div>
+        <div><dt>{t(lang, 'about.languages')}</dt><dd>{t(lang, 'about.languagesValue')}</dd></div>
+        <div><dt>{t(lang, 'about.education')}</dt><dd>{t(lang, 'about.educationValue')}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="container stack">
+      <h2 id="contact-title" class="serif contact-title reveal">
+        {t(lang, 'contact.title')} <em>{t(lang, 'contact.titleEm')}</em>
+      </h2>
+      <div class="paths">
+        <div class="path">
+          <p class="path-label">{t(lang, 'contact.content')}</p>
+          <p class="muted-text">{t(lang, 'contact.contentText')}</p>
+          <Email class="serif path-email" />
+        </div>
+        <div class="path">
+          <p class="path-label">{t(lang, 'contact.modeling')}</p>
+          <p class="muted-text">{t(lang, 'contact.modelingText')}</p>
+          <a href={site.instagram} target="_blank" rel="noopener" class="serif path-email">Instagram &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .accent { color: var(--accent); }
+  .muted-text { color: var(--muted); }
+  .stack { display: flex; flex-direction: column; gap: 48px; }
+  .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; }
+
+  .hero { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-end; padding-block: 48px 96px; }
+  .hero-text { flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 28px; padding-bottom: 24px; }
+  .name { font-size: clamp(64px, 9vw, 136px); line-height: 0.92; letter-spacing: -0.01em; }
+  .intro { max-width: 460px; font-size: 18px; color: var(--ink-2); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px 36px; padding-top: 8px; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .cta { padding: 12px 0; border-bottom: 1px solid var(--ink); }
+  .cta.muted { color: var(--muted); border-color: var(--line-strong); }
+  .hero-photo { flex: 1 1 400px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .hero-photo :global(img) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; background: var(--stone); }
+  .hero-photo figcaption { font-size: 12px; color: var(--muted); }
+
+  .work { border-top: 1px solid var(--line); padding-block: var(--section); }
+
+  .modeling { background: var(--paper-2); padding-block: var(--section); }
+  .model-wrap { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
+  .model-text { flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; padding-top: 24px; }
+  .model-grid { flex: 2 1 520px; min-width: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
+  .m { display: block; overflow: hidden; background: var(--stone); }
+  .m :global(img) { width: 100%; object-fit: cover; transition: transform 0.7s ease; }
+  .m:hover :global(img) { transform: scale(1.03); }
+  .m0 :global(img) { aspect-ratio: 3 / 4; }
+  .m1 { margin-top: 64px; } .m1 :global(img) { aspect-ratio: 3 / 5; }
+  .m2 { margin-top: 24px; } .m2 :global(img) { aspect-ratio: 3 / 4; }
+
+  .about { display: flex; flex-wrap: wrap; gap: 64px; align-items: center; padding-block: var(--section); }
+  .about :global(.about-photo) { flex: 0 1 380px; min-width: 0; width: 380px; max-width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 15%; }
+  .about-text { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+  .about-title { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.15; max-width: 640px; }
+  .bio { max-width: 560px; color: var(--ink-2); }
+  .facts { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 24px 56px; font-size: 14px; }
+  .facts dt { color: var(--muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .facts dd { margin: 4px 0 0; }
+
+  .contact { border-top: 1px solid var(--line); padding-block: var(--section) 80px; }
+  .contact-title { font-size: clamp(48px, 7vw, 104px); line-height: 1; }
+  .paths { display: flex; flex-wrap: wrap; gap: 40px 64px; }
+  .path { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 1px solid var(--ink); }
+  .path-label { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .path :global(.path-email) { font-size: clamp(20px, 2.2vw, 26px); color: var(--accent); word-break: break-all; }
+
+  @media (max-width: 760px) {
+    .m1 { margin-top: 32px; } .m2 { margin-top: 12px; }
+    .model-grid { gap: 8px; }
+  }
+</style>

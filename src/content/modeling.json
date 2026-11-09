@@ -1,0 +1,10 @@
+[
+  { "id": "studio-portrait", "src": "../assets/photos/studio-portrait.jpg", "category": "Studio", "featured": true, "alt": { "en": "Studio portrait in a black tank top", "pt": "Retrato em estúdio com regata preta" } },
+  { "id": "beach-bw", "src": "../assets/photos/beach-bw.jpg", "category": "Editorial", "featured": true, "alt": { "en": "Black and white beach editorial", "pt": "Editorial na praia em preto e branco" } },
+  { "id": "awa-wink", "src": "../assets/photos/awa-wink.jpg", "category": "Commercial", "alt": { "en": "Commercial shoot for AWA Poke", "pt": "Ensaio comercial para AWA Poke" } },
+  { "id": "beach-green", "src": "../assets/photos/beach-green.jpg", "category": "Editorial", "featured": true, "alt": { "en": "Beach editorial in a green two-piece", "pt": "Editorial na praia com conjunto verde" } },
+  { "id": "studio-full", "src": "../assets/photos/studio-full.jpg", "category": "Studio", "alt": { "en": "Full-length studio portrait", "pt": "Retrato de corpo inteiro em estúdio" } },
+  { "id": "awa-sushi", "src": "../assets/photos/awa-sushi.jpg", "category": "Commercial", "alt": { "en": "Commercial shoot for AWA Poke, sushi", "pt": "Ensaio comercial para AWA Poke, sushi" } },
+  { "id": "beach-arms", "src": "../assets/photos/beach-arms.jpg", "category": "Editorial", "alt": { "en": "Beach editorial by the waves", "pt": "Editorial na praia, perto das ondas" } },
+  { "id": "awa-close", "src": "../assets/photos/awa-close.jpg", "category": "Commercial", "alt": { "en": "Commercial close-up for AWA Poke", "pt": "Close comercial para AWA Poke" } }
+]

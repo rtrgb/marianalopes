@@ -1,0 +1,93 @@
+---
+import { t, path, otherLang, languages, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang; route: string }
+const { lang, route } = Astro.props;
+const current = Astro.url.pathname;
+
+const links = [
+  { href: path(lang, '/content/'), label: t(lang, 'nav.content') },
+  { href: path(lang, '/modeling/'), label: t(lang, 'nav.modeling') },
+  { href: path(lang, '/#about'), label: t(lang, 'nav.about') },
+  { href: path(lang, '/#contact'), label: t(lang, 'nav.contact') },
+];
+const alt = otherLang(lang);
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a href={path(lang, '/')} class="brand serif">Mariana Lopes</a>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-open">{t(lang, 'nav.menu')}</span>
+      <span class="menu-close">{t(lang, 'nav.close')}</span>
+    </button>
+
+    <nav id="site-nav" class="nav" aria-label="Main">
+      {links.map((l) => (
+        <a href={l.href} aria-current={current.startsWith(l.href) && !l.href.includes('#') ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))}
+      <span class="langs">
+        <a href={path(lang, route)} aria-current="true" lang={lang}>{languages[lang]}</a>
+        <span aria-hidden="true">/</span>
+        <a href={path(alt, route)} hreflang={alt === 'pt' ? 'pt-BR' : 'en'} lang={alt}>{languages[alt]}</a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { position: relative; z-index: 20; }
+  .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px 40px; padding-block: 28px;
+  }
+  .brand { font-size: 22px; letter-spacing: 0.02em; }
+  .nav {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 32px;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .nav a[aria-current='page'] { border-bottom: 1px solid currentColor; }
+  .langs { display: flex; gap: 6px; color: var(--muted); }
+  .langs a { color: var(--muted); }
+  .langs a[aria-current='true'] { color: var(--ink); border-bottom: 1px solid currentColor; }
+
+  .menu-btn {
+    display: none; background: none; border: 0; padding: 12px 0; min-height: 44px;
+    font: inherit; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink); cursor: pointer;
+  }
+  .menu-close { display: none; }
+
+  @media (max-width: 760px) {
+    .menu-btn { display: block; }
+    .nav {
+      display: none; position: absolute; inset: 100% 0 auto 0;
+      flex-direction: column; align-items: flex-start; gap: 4px;
+      padding: 8px var(--gutter) 28px; background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+    .nav a { padding: 10px 0; }
+    .site-header.open .nav { display: flex; }
+    .site-header.open .menu-open { display: none; }
+    .site-header.open .menu-close { display: inline; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const btn = header?.querySelector<HTMLButtonElement>('.menu-btn');
+  btn?.addEventListener('click', () => {
+    const open = header!.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  header?.querySelectorAll('.nav a').forEach((a) =>
+    a.addEventListener('click', () => {
+      header.classList.remove('open');
+      btn?.setAttribute('aria-expanded', 'false');
+    })
+  );
+</script>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkList from '../components/WorkList.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import { t, type Lang } from '../i18n/ui';
+import { getWork, getVideos } from '../lib/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const work = await getWork(lang);
+// Só entram na grade os vídeos com arquivo ou link. Os outros aparecem quando ganharem um dos dois.
+const videos = (await getVideos()).filter((v) => v.data.video || v.data.link);
+---
+
+<BaseLayout lang={lang} route="/content/" title={t(lang, 'nav.content')}>
+  <section class="container top">
+    <p class="eyebrow">{t(lang, 'hero.tagline')}</p>
+    <h1 class="serif title">{t(lang, 'nav.content')}</h1>
+    <p class="intro">{t(lang, 'hero.intro')}</p>
+  </section>
+
+  <section class="container block" aria-labelledby="sel">
+    <h2 id="sel" class="section-title">{t(lang, 'work.title')}</h2>
+    <WorkList lang={lang} items={work} />
+  </section>
+
+  <section class="more" aria-labelledby="more-title">
+    <div class="container block">
+      <div class="head">
+        <h2 id="more-title" class="section-title">{t(lang, 'more.title')}</h2>
+        <p class="sub">{t(lang, 'more.subtitle')}</p>
+      </div>
+      <VideoGrid lang={lang} items={videos} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .top { display: flex; flex-direction: column; gap: 20px; padding-block: 56px 72px; }
+  .title { font-size: clamp(56px, 8vw, 112px); line-height: 0.95; }
+  .intro { max-width: 520px; font-size: 18px; color: var(--ink-2); }
+  .block { display: flex; flex-direction: column; gap: 40px; padding-bottom: var(--section); }
+  .more { background: var(--paper-2); padding-top: var(--section); }
+  .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .sub { font-size: 14px; color: var(--muted); }
+</style>

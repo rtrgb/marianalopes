@@ -1,0 +1,28 @@
+---
+import site from '../data/site.json';
+import { t, type Lang } from '../i18n/ui';
+import Email from './Email.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="container footer">
+  <span>&copy; {year} {site.name}. {t(lang, 'footer.rights')}</span>
+  <span class="links">
+    <a href={site.instagram} target="_blank" rel="noopener">Instagram</a>
+    <Email label="E-mail" />
+  </span>
+</footer>
+
+<style>
+  .footer {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
+    padding-block: 32px; font-size: 13px; color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+  .links { display: flex; flex-wrap: wrap; gap: 28px; }
+  .links :global(a) { color: var(--muted); }
+  .links :global(a:hover) { color: var(--accent); }
+</style>

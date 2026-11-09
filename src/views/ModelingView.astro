@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ModelingGallery from '../components/ModelingGallery.astro';
+import { t, path, type Lang } from '../i18n/ui';
+import { getModeling } from '../lib/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const items = await getModeling();
+---
+
+<BaseLayout lang={lang} route="/modeling/" title={t(lang, 'modeling.title')}>
+  <section class="container top">
+    <div class="titles">
+      <p class="eyebrow">{t(lang, 'modeling.eyebrow')}</p>
+      <h1 class="serif title">{t(lang, 'modeling.title')}</h1>
+    </div>
+    <p class="intro">{t(lang, 'modeling.intro')}</p>
+  </section>
+
+  <section class="container" aria-label={t(lang, 'modeling.title')}>
+    <ModelingGallery lang={lang} items={items} />
+  </section>
+
+  <section class="container cta">
+    <h2 class="section-title">{t(lang, 'modeling.cta')}</h2>
+    <a href={path(lang, '/#contact')} class="link-underline">{t(lang, 'modeling.ctaLink')} &rarr;</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 64px; padding-block: 56px 40px; }
+  .titles { display: flex; flex-direction: column; gap: 16px; }
+  .title { font-size: clamp(56px, 8vw, 112px); line-height: 0.95; }
+  .intro { max-width: 400px; color: var(--ink-2); }
+  .cta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 24px; padding-block: var(--section); }
+</style>

@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoFrame from '../components/VideoFrame.astro';
+import { t, path, type Lang } from '../i18n/ui';
+import { getWork } from '../lib/content';
+
+interface Props { lang: Lang; entry: CollectionEntry<'work'> }
+const { lang, entry } = Astro.props;
+const d = entry.data;
+
+const all = await getWork(lang);
+const index = all.findIndex((w) => w.id === entry.id);
+const next = all[(index + 1) % all.length];
+
+const rows = [
+  { label: t(lang, 'work.brief'), value: d.brief },
+  { label: t(lang, 'work.idea'), value: d.idea },
+  { label: t(lang, 'work.role'), value: d.role },
+  ...(d.team ? [{ label: t(lang, 'work.team'), value: d.team }] : []),
+  ...(d.nextTime ? [{ label: t(lang, 'work.next'), value: d.nextTime }] : []),
+];
+---
+
+<BaseLayout lang={lang} route={`/work/${d.page}/`} title={d.title} description={`${d.title}. ${d.brief}`}>
+  <article class="container case">
+    <div class="media">
+      <VideoFrame
+        video={d.video}
+        poster={d.cover}
+        link={d.link}
+        label={d.linkLabel ?? d.title}
+        placeholder={d.linkLabel ?? t(lang, 'work.videoSoon')}
+        dark
+      />
+    </div>
+
+    <div class="body">
+      <p class="eyebrow">
+        <a href={path(lang, '/#work-title')}>{t(lang, 'work.back')}</a> &nbsp;/&nbsp; {String(index + 1).padStart(2, '0')}
+      </p>
+      <header class="title-block">
+        <h1 class="serif title">{d.title}</h1>
+        <p class="meta">{d.type} &nbsp;·&nbsp; {d.date} &nbsp;·&nbsp; {d.category}</p>
+      </header>
+
+      <dl class="rows">
+        {rows.map((r) => (
+          <div class="row">
+            <dt>{r.label}</dt>
+            <dd>{r.value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      {d.link && (
+        <a href={d.link} target="_blank" rel="noopener" class="link-underline">{d.linkLabel} &rarr;</a>
+      )}
+
+      {d.gallery.length > 0 && (
+        <div class="gallery">
+          {d.gallery.map((g) => (
+            <Image src={g.src} alt={g.alt} widths={[300, 600]} sizes="(max-width: 760px) 33vw, 200px" />
+          ))}
+        </div>
+      )}
+    </div>
+  </article>
+
+  <nav class="container next" aria-label={t(lang, 'work.nextProject')}>
+    <a href={path(lang, `/work/${next.data.page}/`)}>
+      <span class="eyebrow">{t(lang, 'work.nextProject')}</span>
+      <span class="serif next-title">{next.data.title} &rarr;</span>
+    </a>
+  </nav>
+</BaseLayout>
+
+<style>
+  .case { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; padding-block: 48px 96px; }
+  .media { flex: 0 1 380px; min-width: 0; margin-inline: auto; width: 100%; }
+  .body { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 32px; align-items: flex-start; padding-top: 8px; }
+  .title-block { display: flex; flex-direction: column; gap: 14px; }
+  .title { font-size: clamp(52px, 7vw, 104px); line-height: 0.95; }
+  .meta { font-size: 15px; color: var(--muted); }
+  .rows { margin: 0; width: 100%; border-bottom: 1px solid var(--line); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px 32px; padding: 20px 0; border-top: 1px solid var(--line); }
+  dt { flex: 0 0 140px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  dd { flex: 1 1 280px; margin: 0; font-size: 18px; }
+  .gallery { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .gallery :global(img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+
+  .next { padding-block: 32px 96px; }
+  .next a { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 32px; border-top: 1px solid var(--ink); }
+  .next-title { font-size: clamp(32px, 4vw, 52px); line-height: 1.1; }
+</style>

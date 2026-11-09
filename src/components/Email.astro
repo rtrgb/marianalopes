@@ -1,0 +1,32 @@
+---
+/**
+ * Mostra o e-mail sem deixá-lo inteiro no HTML, para dificultar a coleta por robôs de spam.
+ * O endereço é montado no navegador. Sem JavaScript, aparece "nome [at] dominio".
+ */
+import site from '../data/site.json';
+
+interface Props { label?: string; class?: string }
+const { label, class: className } = Astro.props;
+const [user, domain] = site.email.split('@');
+const reversedUser = user.split('').reverse().join('');
+const reversedDomain = domain.split('').reverse().join('');
+---
+
+<a
+  class:list={['js-email', className]}
+  href="#contact"
+  data-u={reversedUser}
+  data-d={reversedDomain}
+  data-label={label ?? ''}
+>
+  {label ?? `${user} [at] ${domain}`}
+</a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('.js-email').forEach((a) => {
+    const rev = (s = '') => s.split('').reverse().join('');
+    const email = `${rev(a.dataset.u)}@${rev(a.dataset.d)}`;
+    a.href = `mailto:${email}`;
+    if (!a.dataset.label) a.textContent = email;
+  });
+</script>
