@@ -11,4 +11,6 @@ brief: Launch a new collection.
 idea: We received loose clips from the campaign shoot and turned those cuts into an atmosphere that represents the brand.
 link: https://www.instagram.com/reel/DbecweIu8uc/
 linkLabel: Watch on Instagram
+video: /videos/ansata-country.mp4
+cover: ../../../assets/photos/ansata-country.jpg
 ---

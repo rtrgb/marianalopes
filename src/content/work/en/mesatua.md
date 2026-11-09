@@ -12,4 +12,6 @@ idea: Built on recent popular trends, adapted to fit the brand's own audience.
 nextTime: More care with the color grading.
 link: https://www.instagram.com/reel/DcMhz3nhcLI/
 linkLabel: Watch on Instagram
+video: /videos/mesatua.mp4
+cover: ../../../assets/photos/mesatua.jpg
 ---

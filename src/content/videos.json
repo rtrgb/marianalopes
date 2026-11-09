@@ -1,10 +1,10 @@
 [
-  { "id": "ansata-country", "name": "Ansata Country", "kind": { "en": "Campaign edit", "pt": "Edição de campanha" }, "link": "https://www.instagram.com/reel/DbecweIu8uc/" },
-  { "id": "mesatua", "name": "Mesatua", "kind": { "en": "Store video", "pt": "Vídeo da loja" }, "link": "https://www.instagram.com/reel/DcMhz3nhcLI/" },
-  { "id": "teeva", "name": "Teeva", "kind": { "en": "Unboxing", "pt": "Unboxing" }, "link": "https://vt.tiktok.com/ZSgn1wNAG/" },
-  { "id": "mesatua-cafe", "name": "Mesatua Café", "kind": { "en": "Event video", "pt": "Vídeo de evento" } },
-  { "id": "senna", "name": "Senna", "kind": { "en": "Video", "pt": "Vídeo" } },
-  { "id": "senna-show", "name": "Show Senna", "kind": { "en": "Video", "pt": "Vídeo" } },
-  { "id": "mi-campus-alicante", "name": "Mi Campus Alicante", "kind": { "en": "Video", "pt": "Vídeo" } },
-  { "id": "personal-organizer", "name": "Personal Organizer", "kind": { "en": "Video", "pt": "Vídeo" } }
+  { "id": "ansata-country", "name": "Ansata Country", "kind": { "en": "Campaign edit", "pt": "Edição de campanha" }, "link": "https://www.instagram.com/reel/DbecweIu8uc/", "video": "/videos/ansata-country.mp4", "poster": "../assets/photos/ansata-country.jpg" },
+  { "id": "mesatua", "name": "Mesatua", "kind": { "en": "Store video", "pt": "Vídeo da loja" }, "link": "https://www.instagram.com/reel/DcMhz3nhcLI/", "video": "/videos/mesatua.mp4", "poster": "../assets/photos/mesatua.jpg" },
+  { "id": "teeva", "name": "Teeva", "kind": { "en": "Unboxing", "pt": "Unboxing" }, "link": "https://vt.tiktok.com/ZSgn1wNAG/", "video": "/videos/teeva.mp4", "poster": "../assets/photos/teeva.jpg" },
+  { "id": "mesatua-cafe", "name": "Mesatua Café", "kind": { "en": "Event video", "pt": "Vídeo de evento" }, "video": "/videos/mesatua-cafe.mp4", "poster": "../assets/photos/mesatua-cafe.jpg" },
+  { "id": "senna", "name": "Senna Tower", "kind": { "en": "Event stories", "pt": "Stories do evento" }, "video": "/videos/senna-tower.mp4", "poster": "../assets/photos/senna-tower.jpg" },
+  { "id": "senna-show", "name": "Senna Tower, show", "kind": { "en": "Event stories", "pt": "Stories do evento" }, "video": "/videos/senna-show.mp4", "poster": "../assets/photos/senna-show.jpg" },
+  { "id": "mi-campus-alicante", "name": "Mi Campus Alicante", "kind": { "en": "Video", "pt": "Vídeo" }, "video": "/videos/mi-campus-alicante.mp4", "poster": "../assets/photos/mi-campus-alicante.jpg" },
+  { "id": "personal-organizer", "name": "Personal Organizer", "kind": { "en": "Video", "pt": "Vídeo" }, "video": "/videos/personal-organizer.mp4", "poster": "../assets/photos/personal-organizer.jpg" }
 ]

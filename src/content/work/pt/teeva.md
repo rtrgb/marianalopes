@@ -20,4 +20,5 @@ gallery:
     alt: Unboxing da Teeva com o cartão da parceria
   - src: ../../../assets/photos/teeva-case.jpg
     alt: Duas capinhas Teeva com as iniciais ML
+video: /videos/teeva.mp4
 ---

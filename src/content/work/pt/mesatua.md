@@ -12,4 +12,6 @@ idea: Construído a partir de trends recentes, adaptadas ao público da própria
 nextTime: Mais cuidado com o color grading.
 link: https://www.instagram.com/reel/DcMhz3nhcLI/
 linkLabel: Ver no Instagram
+video: /videos/mesatua.mp4
+cover: ../../../assets/photos/mesatua.jpg
 ---

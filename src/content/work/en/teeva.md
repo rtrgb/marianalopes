@@ -20,4 +20,5 @@ gallery:
     alt: Teeva unboxing with the partnership card
   - src: ../../../assets/photos/teeva-case.jpg
     alt: Two Teeva cases with ML initials
+video: /videos/teeva.mp4
 ---

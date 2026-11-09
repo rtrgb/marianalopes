@@ -11,4 +11,6 @@ brief: Lançamento de uma nova coleção.
 idea: Recebemos vários cortes soltos da campanha e transformamos esse material em uma atmosfera que representa a marca.
 link: https://www.instagram.com/reel/DbecweIu8uc/
 linkLabel: Ver no Instagram
+video: /videos/ansata-country.mp4
+cover: ../../../assets/photos/ansata-country.jpg
 ---
