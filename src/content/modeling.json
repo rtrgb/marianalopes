@@ -1,10 +1,20 @@
 [
-  { "id": "studio-portrait", "src": "../assets/photos/studio-portrait.jpg", "category": "Studio", "featured": true, "alt": { "en": "Studio portrait in a black tank top", "pt": "Retrato em estúdio com regata preta" } },
+  { "id": "studio-closeup", "src": "../assets/photos/studio-closeup.jpg", "category": "Studio", "featured": true, "alt": { "en": "Studio close-up in a white tee", "pt": "Close em estúdio com camiseta branca" } },
   { "id": "beach-bw", "src": "../assets/photos/beach-bw.jpg", "category": "Editorial", "featured": true, "alt": { "en": "Black and white beach editorial", "pt": "Editorial na praia em preto e branco" } },
+  { "id": "studio-blazer-pose", "src": "../assets/photos/studio-blazer-pose.jpg", "category": "Studio", "alt": { "en": "Studio shoot in a tweed blazer and heels", "pt": "Ensaio em estúdio com blazer de tweed e salto" } },
   { "id": "awa-wink", "src": "../assets/photos/awa-wink.jpg", "category": "Commercial", "alt": { "en": "Commercial shoot for AWA Poke", "pt": "Ensaio comercial para AWA Poke" } },
+  { "id": "studio-window-bw", "src": "../assets/photos/studio-window-bw.jpg", "category": "Studio", "alt": { "en": "Black and white portrait by a large window", "pt": "Retrato em preto e branco na janela" } },
   { "id": "beach-green", "src": "../assets/photos/beach-green.jpg", "category": "Editorial", "featured": true, "alt": { "en": "Beach editorial in a green two-piece", "pt": "Editorial na praia com conjunto verde" } },
+  { "id": "studio-jeans-floor", "src": "../assets/photos/studio-jeans-floor.jpg", "category": "Studio", "alt": { "en": "Studio shoot in jeans, seated on the floor", "pt": "Ensaio em estúdio de jeans, sentada no chão" } },
+  { "id": "studio-portrait", "src": "../assets/photos/studio-portrait.jpg", "category": "Studio", "alt": { "en": "Studio portrait in a black tank top", "pt": "Retrato em estúdio com regata preta" } },
   { "id": "studio-full", "src": "../assets/photos/studio-full.jpg", "category": "Studio", "alt": { "en": "Full-length studio portrait", "pt": "Retrato de corpo inteiro em estúdio" } },
+  { "id": "studio-blazer-stool", "src": "../assets/photos/studio-blazer-stool.jpg", "category": "Studio", "alt": { "en": "Studio shoot in a blazer, seated on a stool", "pt": "Ensaio em estúdio de blazer, sentada na banqueta" } },
   { "id": "awa-sushi", "src": "../assets/photos/awa-sushi.jpg", "category": "Commercial", "alt": { "en": "Commercial shoot for AWA Poke, sushi", "pt": "Ensaio comercial para AWA Poke, sushi" } },
+  { "id": "studio-window", "src": "../assets/photos/studio-window.jpg", "category": "Studio", "alt": { "en": "Portrait by the window in a black bodysuit", "pt": "Retrato na janela com body preto" } },
+  { "id": "studio-jeans-lean", "src": "../assets/photos/studio-jeans-lean.jpg", "category": "Studio", "alt": { "en": "Studio shoot in jeans and a white crop top", "pt": "Ensaio em estúdio de jeans e cropped branco" } },
   { "id": "beach-arms", "src": "../assets/photos/beach-arms.jpg", "category": "Editorial", "alt": { "en": "Beach editorial by the waves", "pt": "Editorial na praia, perto das ondas" } },
-  { "id": "awa-close", "src": "../assets/photos/awa-close.jpg", "category": "Commercial", "alt": { "en": "Commercial close-up for AWA Poke", "pt": "Close comercial para AWA Poke" } }
+  { "id": "studio-blazer-smile", "src": "../assets/photos/studio-blazer-smile.jpg", "category": "Studio", "alt": { "en": "Smiling studio portrait in a blazer", "pt": "Retrato sorrindo em estúdio, de blazer" } },
+  { "id": "studio-jeans-stool", "src": "../assets/photos/studio-jeans-stool.jpg", "category": "Studio", "alt": { "en": "Full-length studio shoot in jeans on a stool", "pt": "Ensaio de corpo inteiro em estúdio, de jeans na banqueta" } },
+  { "id": "awa-close", "src": "../assets/photos/awa-close.jpg", "category": "Commercial", "alt": { "en": "Commercial close-up for AWA Poke", "pt": "Close comercial para AWA Poke" } },
+  { "id": "studio-jeans-crop", "src": "../assets/photos/studio-jeans-crop.jpg", "category": "Studio", "alt": { "en": "Studio shoot lying back in jeans", "pt": "Ensaio em estúdio deitada, de jeans" } }
 ]
